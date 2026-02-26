@@ -54,24 +54,6 @@ export const prototypes: PrototypeDef[] = [
     designSystem: 'POS',
     element: <PrinterSetupPos />,
   },
-
-  {
-    slug: 'fb-order',
-    title: 'F&B Order — Self-service tab ordering',
-    description: 'Mobile-first guest ordering to an existing booking tab. QR/URL entry, menu, add to tab, no checkout.',
-    tags: ['lo-fi', 'F&B', 'venue', 'mobile', 'tab', 'ordering'],
-    designSystem: 'lo-fi',
-    element: <FbOrder />,
-  },
-
-  {
-    slug: 'stock-from-invoice-lo-fi',
-    title: 'Stock from Invoice — Capture invoice, review, push to ROLLER',
-    description: 'Upload photo of stock invoice → ROLLER shows table → adjust → push stock → revert.',
-    tags: ['lo-fi', 'stock', 'inventory', 'invoice', 'upload', 'ROLLER'],
-    designSystem: 'lo-fi',
-    element: <StockFromInvoiceLoFi />,
-  },
 ];
 
 export function getPrototypeBySlug(slug: string): PrototypeDef | undefined {
