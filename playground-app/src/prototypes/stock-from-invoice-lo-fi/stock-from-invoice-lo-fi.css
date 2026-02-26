@@ -1,0 +1,421 @@
+/**
+ * ROLLER — Stock from Invoice (Lo-Fi Wireframes)
+ * Upload invoice photo → table review → push stock → revert.
+ * Uses lo-fi design tokens and spacing scale (--space-lofi-*, --content-lofi-*).
+ */
+
+.stock-invoice-lofi {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: var(--font-lofi-sans, "Comic Neue", cursive, system-ui, sans-serif);
+  background-color: var(--color-lofi-bg, #f5f5f3);
+  color: var(--color-lofi-ink, #2d2d2a);
+}
+
+.stock-invoice-lofi__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  min-height: var(--header-lofi-height, 56px);
+  padding: 0 var(--content-lofi-gutter, 24px);
+  gap: var(--space-lofi-4, 16px);
+  border-bottom: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  background-color: var(--color-lofi-surface, #fff);
+}
+
+.stock-invoice-lofi__back {
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-lofi-accent, #4a90d9);
+  text-decoration: none;
+}
+
+.stock-invoice-lofi__back:hover {
+  color: var(--color-lofi-accent-hover, #357abd);
+}
+
+.stock-invoice-lofi__main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-lofi-max, 52rem);
+  margin: 0 auto;
+  padding: var(--space-lofi-6, 32px) var(--content-lofi-gutter, 24px);
+  box-sizing: border-box;
+}
+
+/* Page-level title and subtitle (sit above content card) */
+.stock-invoice-lofi__page-title {
+  font-size: var(--text-lofi-heading, 1.5rem);
+  line-height: var(--text-lofi-heading--line-height, 1.25);
+  font-weight: 700;
+  margin: 0 0 var(--space-lofi-2, 8px) 0;
+}
+
+.stock-invoice-lofi__page-subtitle {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 var(--space-lofi-6, 32px) 0;
+}
+
+.stock-invoice-lofi__title {
+  font-size: var(--text-lofi-heading, 1.5rem);
+  line-height: var(--text-lofi-heading--line-height, 1.25);
+  font-weight: 700;
+  margin: 0 0 var(--space-lofi-3, 12px) 0;
+}
+
+.stock-invoice-lofi__annot {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 var(--space-lofi-4, 16px) 0;
+}
+
+/* Single content card (upload screen) */
+.stock-invoice-lofi__content-card {
+  width: 100%;
+}
+
+.stock-invoice-lofi__content-card .stock-invoice-lofi__section-title {
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 var(--space-lofi-5, 24px) 0;
+}
+
+.stock-invoice-lofi__section-title {
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 var(--space-lofi-2, 8px) 0;
+}
+
+.stock-invoice-lofi__section-body {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 var(--space-lofi-3, 12px) 0;
+}
+
+/* Upload zone: centered block inside the card */
+.stock-invoice-lofi__upload-zone-wrap {
+  display: flex;
+  justify-content: center;
+  margin-bottom: var(--space-lofi-5, 24px);
+}
+
+.stock-invoice-lofi__upload-zone {
+  width: 100%;
+  max-width: 28rem;
+  min-height: 14rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lofi-6, 32px);
+  color: var(--color-lofi-ink-placeholder, #9c9c98);
+  font-size: var(--text-lofi-body, 1rem);
+  background-color: var(--color-lofi-bg, #f5f5f3);
+  border: 2px dashed var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-md, 10px);
+  cursor: pointer;
+}
+
+.stock-invoice-lofi__upload-zone:hover {
+  border-color: var(--color-lofi-accent, #4a90d9);
+  background-color: var(--color-lofi-surface-hover, #fafaf8);
+}
+
+.stock-invoice-lofi__upload-icon {
+  font-size: 2.5rem;
+  line-height: 1;
+  margin-bottom: var(--space-lofi-3, 12px);
+  color: var(--color-lofi-ink-placeholder, #9c9c98);
+}
+
+.stock-invoice-lofi__upload-label {
+  font-weight: 700;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin-bottom: var(--space-lofi-1, 4px);
+}
+
+.stock-invoice-lofi__upload-hint {
+  font-size: 0.875rem;
+  color: var(--color-lofi-accent, #4a90d9);
+  cursor: pointer;
+}
+
+.stock-invoice-lofi__upload-zone:hover .stock-invoice-lofi__upload-hint {
+  color: var(--color-lofi-accent-hover, #357abd);
+}
+
+/* Tips section: left-aligned below upload zone */
+.stock-invoice-lofi__tips {
+  margin: 0;
+  padding: 0;
+  border: none;
+}
+
+.stock-invoice-lofi__tips-heading {
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin: 0 0 var(--space-lofi-2, 8px) 0;
+  color: var(--color-lofi-ink, #2d2d2a);
+}
+
+.stock-invoice-lofi__tips-list {
+  list-style: disc;
+  padding-left: 1.5rem;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+}
+
+.stock-invoice-lofi__tips-list li {
+  margin-bottom: var(--space-lofi-1, 4px);
+}
+
+.stock-invoice-lofi__tips-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Actions */
+.stock-invoice-lofi__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-lofi-2, 8px);
+  margin-top: var(--space-lofi-4, 16px);
+}
+
+/* Table view — header (Back to Upload + item count) */
+.stock-invoice-lofi__table-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-lofi-2, 8px);
+  margin-bottom: var(--space-lofi-3, 12px);
+}
+
+.stock-invoice-lofi__back-to-upload {
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  color: var(--color-lofi-accent, #4a90d9);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.stock-invoice-lofi__back-to-upload:hover {
+  color: var(--color-lofi-accent-hover, #357abd);
+}
+
+.stock-invoice-lofi__table-header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.stock-invoice-lofi__item-count {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+}
+
+/* Table */
+.stock-invoice-lofi__table-wrap {
+  overflow-x: auto;
+  margin: var(--space-lofi-4, 16px) 0;
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-md, 10px);
+  background: var(--color-lofi-surface, #fff);
+}
+
+.stock-invoice-lofi__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+  line-height: 1.4;
+}
+
+.stock-invoice-lofi__table th,
+.stock-invoice-lofi__table td {
+  padding: var(--space-lofi-2, 8px) var(--space-lofi-3, 12px);
+  text-align: left;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--color-lofi-stroke, #b3b3ad);
+}
+
+.stock-invoice-lofi__table th {
+  font-weight: 700;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  background: var(--color-lofi-surface-hover, #fafaf8);
+}
+
+.stock-invoice-lofi__table tr:last-child td {
+  border-bottom: none;
+}
+
+.stock-invoice-lofi__table .wire-input {
+  width: 100%;
+  min-width: 0;
+  min-height: 36px;
+  padding: var(--space-lofi-1, 4px) var(--space-lofi-2, 8px);
+  font-size: 0.875rem;
+}
+
+.stock-invoice-lofi__table input[type="number"] {
+  min-width: 4rem;
+  text-align: right;
+}
+
+.stock-invoice-lofi__total-cell {
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.stock-invoice-lofi__actions-cell {
+  white-space: nowrap;
+}
+
+.stock-invoice-lofi__action-btn {
+  padding: var(--space-lofi-1, 4px) var(--space-lofi-2, 8px);
+  font-size: 0.8125rem;
+  min-height: 36px;
+  margin-right: var(--space-lofi-1, 4px);
+}
+
+.stock-invoice-lofi__delete-btn {
+  color: var(--color-lofi-error, #c75050);
+  border-color: var(--color-lofi-error, #c75050);
+}
+
+.stock-invoice-lofi__delete-btn:hover {
+  background: #fef2f2;
+  border-color: var(--color-lofi-error, #c75050);
+}
+
+.stock-invoice-lofi__add-row {
+  margin-top: var(--space-lofi-2, 8px);
+}
+
+/* Footer: Total Order Value + Cancel / Push to ROLLER */
+.stock-invoice-lofi__footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-lofi-4, 16px);
+  margin-top: var(--space-lofi-5, 24px);
+  padding-top: var(--space-lofi-4, 16px);
+  border-top: 2px solid var(--color-lofi-stroke, #b3b3ad);
+}
+
+.stock-invoice-lofi__total-order {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lofi-1, 4px);
+}
+
+.stock-invoice-lofi__total-order-label {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+}
+
+.stock-invoice-lofi__total-order-value {
+  font-size: var(--text-lofi-lg, 1.125rem);
+  line-height: 1.25;
+  font-weight: 700;
+}
+
+.stock-invoice-lofi__footer .stock-invoice-lofi__actions {
+  margin-top: 0;
+}
+
+.stock-invoice-lofi__push-btn {
+  color: #fff;
+  background-color: var(--color-lofi-success, #4a7c59);
+  border-color: var(--color-lofi-success, #4a7c59);
+}
+
+.stock-invoice-lofi__push-btn:hover {
+  background-color: #3d6a4a;
+  border-color: #3d6a4a;
+}
+
+/* Pushed success */
+.stock-invoice-lofi__success-card {
+  padding: var(--space-lofi-5, 24px);
+  background: #e6f4ea;
+  border: 2px solid var(--color-lofi-success, #4a7c59);
+  border-radius: var(--radius-lofi-md, 10px);
+  margin: var(--space-lofi-4, 16px) 0;
+}
+
+.stock-invoice-lofi__success-title {
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-lofi-success, #4a7c59);
+  margin: 0 0 var(--space-lofi-2, 8px) 0;
+}
+
+.stock-invoice-lofi__success-body {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 var(--space-lofi-4, 16px) 0;
+}
+
+.stock-invoice-lofi__revert-btn {
+  margin-top: 0;
+}
+
+/* Upload history list */
+.stock-invoice-lofi__history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.stock-invoice-lofi__history-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--space-lofi-3, 12px);
+  padding: var(--space-lofi-4, 16px) var(--space-lofi-5, 24px);
+  margin-bottom: var(--space-lofi-2, 8px);
+  background: var(--color-lofi-surface, #fff);
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-md, 10px);
+}
+
+.stock-invoice-lofi__history-item:last-child {
+  margin-bottom: 0;
+}
+
+.stock-invoice-lofi__history-item-body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lofi-1, 4px);
+}
+
+.stock-invoice-lofi__history-item-date {
+  font-weight: 700;
+  font-size: var(--text-lofi-body, 1rem);
+  line-height: 1.25;
+}
+
+.stock-invoice-lofi__history-item-meta {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+}

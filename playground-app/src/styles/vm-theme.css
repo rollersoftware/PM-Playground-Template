@@ -1,0 +1,69 @@
+/**
+ * VM (Venue Manager) Design System — Tailwind v4 theme
+ *
+ * Source: docs/design-tokens/VM-design-token-structure.md
+ * Use these tokens when building VM components or prototypes so they adhere
+ * to the VM design system (Figma: Manage — VM Components).
+ *
+ * Usage:
+ *   - Colors:  bg-vm-primary-red, text-vm-neutral-10, border-vm-neutral-70
+ *   - Brand:   bg-vm-roller-blue-40, text-vm-blue-primary
+ *   - Prefer semantic tokens (vm-neutral-*, vm-roller-blue-*, vm-primary-*) over legacy.
+ */
+
+@theme {
+  /* ========== Typography (VM default sizes) ========== */
+  --text-vm-medium: 1rem; /* 16px – body/default */
+  --text-vm-medium--line-height: 1.5;
+  --text-vm-large: 1.125rem; /* 18px – large copy */
+  --text-vm-large--line-height: 1.5;
+
+  /* ========== Primary palette ========== */
+  --color-vm-primary-white: #ffffff;
+  --color-vm-primary-red: #e84b4c;
+  --color-vm-primary-light-salmon: #f9cdc6;
+
+  /* ========== ROLLER Blue (brand blue) ========== */
+  --color-vm-roller-blue-30: #033180;
+  --color-vm-roller-blue-40: #074dc5;
+  --color-vm-roller-blue-99: #f5f8ff;
+
+  /* ========== Secondary palette ========== */
+  --color-vm-secondary-dark-purple: #4b306e;
+  --color-vm-secondary-pink: #ffcffa;
+  --color-vm-secondary-orange: #ff953d;
+  --color-vm-secondary-tan: #dcac67;
+
+  /* ========== confetti/colour/neutral (semantic neutrals) ========== */
+  --color-vm-neutral-10: #252527;
+  --color-vm-neutral-70: #d4d4d6;
+  --color-vm-neutral-80: #e3e3e3;
+  --color-vm-neutral-100: #ffffff;
+
+  /* ========== NEW/ (extended semantic / product tokens) ========== */
+  --color-vm-red-60: #ed4b4b;
+  --color-vm-blue-primary: #143d82;
+  --color-vm-blue-tint-1: #002954;
+  --color-vm-blue-tint-2: #001f4a;
+  --color-vm-gray-tint-1: #cccccc;
+  --color-vm-gray-tint-2: #969696;
+  --color-vm-light-pink: #fcc4b5;
+  --color-vm-brown: #6e3d00;
+
+  /* ========== Secondary accent (Secondary/50*) ========== */
+  --color-vm-accent-orange: #ff490c;
+
+  /* ========== Semantic aliases (for convenience) ========== */
+  --color-vm-text-primary: #252527;
+  --color-vm-text-inverted: #ffffff;
+  --color-vm-border-default: #d4d4d6;
+  --color-vm-surface-light: #f5f8ff;
+  --color-vm-brand-fill: #074dc5;
+  --color-vm-brand-heading: #143d82;
+  --color-vm-critical-fill: #e84b4c;
+  --color-vm-warning-accent: #ff490c;
+
+  /* ========== Legacy (Greyscale) ========== */
+  --color-vm-greyscale-charcoal: #383838;
+  --color-vm-greyscale-dark: #1d1e1c;
+}

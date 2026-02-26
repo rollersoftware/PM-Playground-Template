@@ -1,0 +1,67 @@
+/**
+ * Lo‑fi / Balsamiq-style design system — Tailwind v4 theme
+ *
+ * For low-fidelity prototyping: wireframes, sketchy UI, placeholder-heavy
+ * layouts. Use when you want to convey structure and flow without visual polish.
+ *
+ * Usage:
+ *   - Colors:  bg-lofi-bg, text-lofi-ink, border-lofi-stroke
+ *   - Typography: font-lofi-sans, text-lofi-body
+ *   - Wireframe: border-2 border-dashed border-lofi-stroke (or use .wire-* in lo-fi.css)
+ */
+
+@theme {
+  /* ========== Font family (sketch / informal) ========== */
+  --font-lofi-sans: "Comic Neue", "Comic Sans MS", "Chalkboard", "Segoe Print", cursive, system-ui, sans-serif;
+
+  /* ========== Typography ========== */
+  --text-lofi-xs: 0.75rem;
+  --text-lofi-xs--line-height: 1.4;
+  --text-lofi-body: 1rem;
+  --text-lofi-body--line-height: 1.5;
+  --text-lofi-lg: 1.125rem;
+  --text-lofi-lg--line-height: 1.4;
+  --text-lofi-heading: 1.5rem;
+  --text-lofi-heading--line-height: 1.25;
+  --text-lofi-display: 2rem;
+  --text-lofi-display--line-height: 1.2;
+
+  /* ========== Spacing scale (4px base — use for alignment & vertical rhythm) ========== */
+  --space-lofi-1: 4px;
+  --space-lofi-2: 8px;
+  --space-lofi-3: 12px;
+  --space-lofi-4: 16px;
+  --space-lofi-5: 24px;
+  --space-lofi-6: 32px;
+  --space-lofi-8: 40px;
+  --space-lofi-10: 48px;
+
+  /* ========== Layout ========== */
+  --content-lofi-max: 52rem;
+  --content-lofi-gutter: 24px;
+  --header-lofi-height: 56px;
+
+  /* ========== Colors — muted, gray-forward, one accent ========== */
+  --color-lofi-bg: #f5f5f3;
+  --color-lofi-surface: #ffffff;
+  --color-lofi-surface-hover: #fafaf8;
+  --color-lofi-ink: #2d2d2a;
+  --color-lofi-ink-muted: #6b6b68;
+  --color-lofi-ink-placeholder: #9c9c98;
+  --color-lofi-stroke: #b3b3ad;
+  --color-lofi-stroke-strong: #8c8c85;
+  --color-lofi-accent: #4a90d9;
+  --color-lofi-accent-hover: #357abd;
+  --color-lofi-highlight: #fff9e6;
+  --color-lofi-error: #c75050;
+  --color-lofi-success: #4a7c59;
+
+  /* ========== Border radius — soft, slightly rounded ========== */
+  --radius-lofi-sm: 6px;
+  --radius-lofi-md: 10px;
+  --radius-lofi-lg: 14px;
+  --radius-lofi-xl: 18px;
+
+  /* ========== Interactive (touch targets, focus) ========== */
+  --touch-lofi-min: 44px;
+}

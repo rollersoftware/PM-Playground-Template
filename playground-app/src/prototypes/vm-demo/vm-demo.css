@@ -1,0 +1,521 @@
+/**
+ * VM demo — Venue Manager dashboard layout (CSS-only).
+ * Matches ROLLER Venue Manager: dark sidebar, welcome, checklist cards, progress, resources.
+ * Uses design tokens from vm-theme.css (var(--color-vm-*)).
+ */
+
+/* -------------------------------------------------------------------------
+   Root & layout
+   ------------------------------------------------------------------------- */
+.vm-demo {
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--color-vm-surface-light, #f5f8ff);
+}
+
+/* -------------------------------------------------------------------------
+   Left sidebar (dark blue)
+   ------------------------------------------------------------------------- */
+.vm-demo__sidebar {
+  width: 14rem;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-vm-roller-blue-30, #033180);
+  color: var(--color-vm-primary-white, #fff);
+}
+
+.vm-demo__sidebar-top {
+  padding: 1rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.vm-demo__sidebar .vm-demo__back {
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 0.5rem;
+}
+
+.vm-demo__sidebar .vm-demo__back:hover {
+  color: #fff;
+}
+
+.vm-demo__logo-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.vm-demo__logo {
+  width: 1.5rem;
+  height: 1.5rem;
+  background: linear-gradient(135deg, var(--color-vm-primary-red, #e84b4c) 50%, var(--color-vm-roller-blue-40, #074dc5) 50%);
+  border-radius: 2px;
+}
+
+.vm-demo__logo-text {
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.vm-demo__user {
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-bottom: 0.75rem;
+}
+
+.vm-demo__search-wrap {
+  position: relative;
+}
+
+.vm-demo__search-wrap input {
+  width: 100%;
+  padding: 0.5rem 0.5rem 0.5rem 2rem;
+  font-size: 0.875rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 0.375rem;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.vm-demo__search-wrap input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.vm-demo__search-icon {
+  position: absolute;
+  left: 0.5rem;
+  top: 50%;
+  transform: translateY(-50%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.vm-demo__nav {
+  flex: 1;
+  padding: 0.75rem 0;
+  overflow: auto;
+}
+
+.vm-demo__nav-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.6rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-align: left;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.85);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.vm-demo__nav-item:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+}
+
+.vm-demo__nav-item.is-active {
+  background: rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+.vm-demo__nav-badge {
+  margin-left: auto;
+  min-width: 1.25rem;
+  height: 1.25rem;
+  padding: 0 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  text-align: center;
+  border-radius: 999px;
+  background: var(--color-vm-primary-red, #e84b4c);
+  color: #fff;
+}
+
+.vm-demo__sidebar-bottom {
+  padding: 0.75rem 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.vm-demo__icon-btn {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  color: rgba(255, 255, 255, 0.8);
+  cursor: pointer;
+  border-radius: 0.25rem;
+}
+
+.vm-demo__icon-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+/* -------------------------------------------------------------------------
+   Main content
+   ------------------------------------------------------------------------- */
+.vm-demo__content {
+  flex: 1;
+  min-width: 0;
+  overflow: auto;
+  padding: 2rem;
+}
+
+.vm-demo__welcome {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.vm-demo__welcome-text h1 {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--color-vm-text-primary, #252527);
+  margin: 0 0 0.25rem 0;
+}
+
+.vm-demo__welcome-subtitle {
+  font-size: 1rem;
+  color: var(--color-vm-gray-tint-2, #969696);
+  margin: 0;
+}
+
+.vm-demo__dismiss {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-vm-brand-fill, #074dc5);
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+}
+
+.vm-demo__dismiss:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------
+   Cards grid
+   ------------------------------------------------------------------------- */
+.vm-demo__grid {
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto auto;
+}
+
+@media (max-width: 900px) {
+  .vm-demo__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Hero card (getting started checklist) - spans first row left */
+.vm-demo__card-hero {
+  display: flex;
+  align-items: stretch;
+  gap: 1rem;
+  padding: 0;
+  border: 1px solid var(--color-vm-border-default, #d4d4d6);
+  border-radius: 0.5rem;
+  background: var(--color-vm-primary-white, #fff);
+  overflow: hidden;
+  text-align: left;
+  cursor: pointer;
+  width: 100%;
+}
+
+.vm-demo__card-hero:hover {
+  border-color: var(--color-vm-roller-blue-40, #074dc5);
+}
+
+.vm-demo__card-hero-thumb {
+  width: 8rem;
+  flex-shrink: 0;
+  background: var(--color-vm-neutral-70, #d4d4d6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-vm-gray-tint-2, #969696);
+  font-size: 2rem;
+}
+
+.vm-demo__card-hero-body {
+  padding: 1rem 1rem 1rem 0;
+  flex: 1;
+  min-width: 0;
+}
+
+.vm-demo__card-hero-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--color-vm-gray-tint-2, #969696);
+  margin: 0 0 0.25rem 0;
+}
+
+.vm-demo__card-hero-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-vm-text-primary, #252527);
+  margin: 0 0 0.25rem 0;
+}
+
+.vm-demo__card-hero-sub {
+  font-size: 0.875rem;
+  color: var(--color-vm-gray-tint-2, #969696);
+  margin: 0;
+}
+
+/* Progress card - first row right */
+.vm-demo__card-progress {
+  padding: 1.25rem;
+  border: 1px solid var(--color-vm-border-default, #d4d4d6);
+  border-radius: 0.5rem;
+  background: var(--color-vm-primary-white, #fff);
+}
+
+.vm-demo__card-progress-icon {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-vm-roller-blue-40, #074dc5);
+  font-size: 1.5rem;
+}
+
+.vm-demo__card-progress-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-vm-text-primary, #252527);
+  margin: 0 0 0.75rem 0;
+}
+
+.vm-demo__progress-bar {
+  height: 0.5rem;
+  border-radius: 999px;
+  background: var(--color-vm-neutral-80, #e3e3e3);
+  overflow: hidden;
+}
+
+.vm-demo__progress-bar-fill {
+  height: 100%;
+  border-radius: 999px;
+  background: #22c55e;
+  width: 40%;
+}
+
+/* Collapsible card */
+.vm-demo__card-collapse {
+  border: 1px solid var(--color-vm-border-default, #d4d4d6);
+  border-radius: 0.5rem;
+  background: var(--color-vm-primary-white, #fff);
+}
+
+.vm-demo__card-collapse-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  cursor: pointer;
+  border: none;
+  width: 100%;
+  text-align: left;
+  background: none;
+  font: inherit;
+}
+
+.vm-demo__card-collapse-header:hover {
+  background: var(--color-vm-surface-light, #f5f8ff);
+}
+
+.vm-demo__card-collapse-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-vm-text-primary, #252527);
+  margin: 0 0 0.15rem 0;
+}
+
+.vm-demo__card-collapse-desc {
+  font-size: 0.875rem;
+  color: var(--color-vm-gray-tint-2, #969696);
+  margin: 0;
+}
+
+.vm-demo__card-collapse-chevron {
+  flex-shrink: 0;
+  color: var(--color-vm-gray-tint-2, #969696);
+  transition: transform 0.2s;
+}
+
+.vm-demo__card-collapse.is-open .vm-demo__card-collapse-chevron {
+  transform: rotate(180deg);
+}
+
+.vm-demo__card-collapse-body {
+  padding: 0 1.25rem 1.25rem;
+  display: none;
+}
+
+.vm-demo__card-collapse.is-open .vm-demo__card-collapse-body {
+  display: block;
+}
+
+/* Checklist step row */
+.vm-demo__step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--color-vm-border-default, #d4d4d6);
+}
+
+.vm-demo__step:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.vm-demo__step-num {
+  width: 1.75rem;
+  height: 1.75rem;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #22c55e;
+  color: #fff;
+  font-size: 0.875rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vm-demo__step-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.vm-demo__step-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--color-vm-text-primary, #252527);
+  margin: 0 0 0.2rem 0;
+}
+
+.vm-demo__step-desc {
+  font-size: 0.875rem;
+  color: var(--color-vm-gray-tint-2, #969696);
+  margin: 0 0 0.35rem 0;
+}
+
+.vm-demo__step-link {
+  font-size: 0.875rem;
+  color: var(--color-vm-brand-fill, #074dc5);
+  text-decoration: none;
+}
+
+.vm-demo__step-link:hover {
+  text-decoration: underline;
+}
+
+.vm-demo__step-btn {
+  flex-shrink: 0;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 0.375rem;
+  background: var(--color-vm-roller-blue-40, #074dc5);
+  color: var(--color-vm-primary-white, #fff);
+  cursor: pointer;
+}
+
+.vm-demo__step-btn:hover {
+  background: var(--color-vm-roller-blue-30, #033180);
+}
+
+/* Helpful resources card */
+.vm-demo__card-resources {
+  padding: 1.25rem;
+  border: 1px solid var(--color-vm-border-default, #d4d4d6);
+  border-radius: 0.5rem;
+  background: var(--color-vm-primary-white, #fff);
+}
+
+.vm-demo__card-resources-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-vm-roller-blue-40, #074dc5);
+}
+
+.vm-demo__card-resources-title {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--color-vm-text-primary, #252527);
+  margin: 0 0 1rem 0;
+}
+
+.vm-demo__resources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.vm-demo__resources-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-vm-border-default, #d4d4d6);
+  font-size: 0.875rem;
+}
+
+.vm-demo__resources-list li:last-child {
+  border-bottom: none;
+}
+
+.vm-demo__resources-link {
+  color: var(--color-vm-brand-fill, #074dc5);
+  text-decoration: none;
+}
+
+.vm-demo__resources-link:hover {
+  text-decoration: underline;
+}
+
+.vm-demo__resources-ext {
+  color: var(--color-vm-gray-tint-2, #969696);
+  font-size: 0.75rem;
+}
+
+/* Back link (for prototype) */
+.vm-demo__back {
+  display: inline-block;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-vm-brand-fill, #074dc5);
+  text-decoration: none;
+  margin-bottom: 1rem;
+}
+
+.vm-demo__back:hover {
+  color: var(--color-vm-accent-orange, #ff490c);
+}

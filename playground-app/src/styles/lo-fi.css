@@ -1,0 +1,336 @@
+/**
+ * Lo‑fi / Balsamiq-style design system — fonts & component utilities
+ *
+ * Use with lo-fi-theme.css. Apply .lo-fi-scope to a wrapper (e.g. body or a
+ * prototype section) to enable the sketch font and wireframe look.
+ *
+ * Component classes:
+ *   .wire-card     — outlined box (placeholder panel/section)
+ *   .wire-card--item   — list/item card (stronger separation for product rows, line items)
+ *   .wire-card--section — section card (grouping with optional header)
+ *   .lofi-card-stack   — vertical stack of cards with consistent gap
+ *   .lofi-card__divider — thin divider inside a card
+ *   .wire-btn      — simple outlined button
+ *   .wire-input    — outlined input look
+ *   .wire-placeholder — dashed box for “content goes here”
+ *   .wire-list     — minimal list styling
+ *   .wire-selectable-list / .wire-selectable-card — selectable list cards (icon + title + detail + pill)
+ */
+
+/* Comic Neue is loaded via <link> in index.html for lo-fi prototype font. */
+
+/* ========== Scope: apply to container for lo-fi prototype ========== */
+.lo-fi-scope {
+  font-family: var(--font-lofi-sans);
+  font-size: var(--text-lofi-body, 1rem);
+  line-height: var(--text-lofi-body--line-height, 1.5);
+  background-color: var(--color-lofi-bg);
+  color: var(--color-lofi-ink);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== Page layout (optional app shell) ========== */
+.lo-fi-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.lo-fi-page__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  min-height: var(--header-lofi-height, 56px);
+  padding: 0 var(--content-lofi-gutter, 24px);
+  gap: var(--space-lofi-4, 16px);
+  background-color: var(--color-lofi-surface);
+  border-bottom: 2px solid var(--color-lofi-stroke);
+}
+
+.lo-fi-page__main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-lofi-max, 52rem);
+  margin: 0 auto;
+  padding: var(--space-lofi-6, 32px) var(--content-lofi-gutter, 24px);
+  box-sizing: border-box;
+}
+
+/* ========== Section rhythm (headings / body muted) ========== */
+.lo-fi-scope h1,
+.lo-fi-scope .lo-fi-heading-1 {
+  font-size: var(--text-lofi-heading, 1.5rem);
+  line-height: var(--text-lofi-heading--line-height, 1.25);
+  font-weight: 700;
+  margin: 0 0 var(--space-lofi-3, 12px) 0;
+}
+
+.lo-fi-scope .lo-fi-body-muted {
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--color-lofi-ink-muted);
+  margin: 0 0 var(--space-lofi-4, 16px) 0;
+}
+
+/* ========== Wireframe components ========== */
+.wire-card {
+  background-color: var(--color-lofi-surface);
+  border: 2px solid var(--color-lofi-stroke);
+  border-radius: var(--radius-lofi-md);
+  padding: var(--space-lofi-5, 24px);
+}
+
+.wire-card--dashed {
+  border-style: dashed;
+}
+
+/* ========== Card style system — separation & division (stays lo-fi) ========== */
+/* Use --item for list items (products, line items) so each unit reads as one block. */
+.wire-card--item {
+  border-color: var(--color-lofi-stroke-strong, #8c8c85);
+  background-color: var(--color-lofi-surface, #fff);
+  padding: var(--space-lofi-4, 16px) var(--space-lofi-5, 24px);
+}
+
+/* Use --section to group content with clear boundaries (e.g. category block). */
+.wire-card--section {
+  padding: 0;
+  overflow: hidden;
+}
+
+.wire-card--section .lofi-card__header,
+.wire-card--section .wire-card__section-header {
+  padding: var(--space-lofi-3, 12px) var(--space-lofi-5, 24px);
+  background-color: var(--color-lofi-surface-hover, #fafaf8);
+  border-bottom: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+}
+
+.wire-card--section > *:not(.lofi-card__header):not(.wire-card__section-header) {
+  padding: var(--space-lofi-5, 24px);
+}
+
+/* Stack of cards: consistent vertical gap so items don’t blur together. */
+.lofi-card-stack {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lofi-4, 16px);
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.lofi-card-stack > * {
+  margin: 0;
+}
+
+/* Optional divider inside a card (e.g. between description and actions). */
+.lofi-card__divider,
+.wire-card__divider {
+  height: 0;
+  margin: var(--space-lofi-4, 16px) 0;
+  border: none;
+  border-top: 1px solid var(--color-lofi-stroke, #b3b3ad);
+}
+
+.wire-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-lofi-2, 8px);
+  min-height: var(--touch-lofi-min, 44px);
+  padding: var(--space-lofi-2, 8px) var(--space-lofi-4, 16px);
+  font-family: inherit;
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  line-height: 1.25;
+  color: var(--color-lofi-ink, #2d2d2a);
+  background-color: var(--color-lofi-surface, #ffffff);
+  border: 2px solid var(--color-lofi-stroke-strong, #8c8c85);
+  border-radius: var(--radius-lofi-md, 10px);
+  cursor: pointer;
+  box-sizing: border-box;
+}
+
+.wire-btn:hover {
+  background-color: var(--color-lofi-surface-hover, #fafaf8);
+  border-color: var(--color-lofi-ink-muted, #6b6b68);
+}
+
+.wire-btn--primary {
+  color: #ffffff;
+  background-color: var(--color-lofi-accent, #4a90d9);
+  border-color: var(--color-lofi-accent, #4a90d9);
+}
+
+.wire-btn--primary:hover {
+  color: #ffffff;
+  background-color: var(--color-lofi-accent-hover, #357abd);
+  border-color: var(--color-lofi-accent-hover, #357abd);
+}
+
+.wire-input {
+  display: block;
+  width: 100%;
+  min-height: var(--touch-lofi-min, 44px);
+  padding: var(--space-lofi-2, 8px) var(--space-lofi-3, 12px);
+  font-family: inherit;
+  font-size: var(--text-lofi-body);
+  line-height: 1.25;
+  color: var(--color-lofi-ink);
+  background-color: var(--color-lofi-surface);
+  border: 2px solid var(--color-lofi-stroke);
+  border-radius: var(--radius-lofi-sm);
+  box-sizing: border-box;
+}
+
+.wire-input::placeholder {
+  color: var(--color-lofi-ink-placeholder);
+}
+
+.wire-input:focus {
+  outline: none;
+  border-color: var(--color-lofi-accent);
+}
+
+.wire-placeholder {
+  min-height: 6rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-lofi-5, 24px);
+  color: var(--color-lofi-ink-placeholder);
+  font-size: var(--text-lofi-body);
+  background-color: var(--color-lofi-surface);
+  border: 2px dashed var(--color-lofi-stroke);
+  border-radius: var(--radius-lofi-sm);
+}
+
+.wire-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.wire-list li {
+  padding: var(--space-lofi-2, 8px) 0;
+  border-bottom: 1px solid var(--color-lofi-stroke);
+  font-size: var(--text-lofi-body);
+  line-height: 1.5;
+}
+
+.wire-list li:last-child {
+  border-bottom: none;
+}
+
+/* Optional: subtle “sketch” shadow for cards */
+.wire-card--shadow {
+  box-shadow: 2px 2px 0 var(--color-lofi-stroke);
+}
+
+/* ========== Selectable list card (e.g. discovered devices, options) ========== */
+.wire-selectable-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.wire-selectable-card {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-lofi-3, 12px);
+  width: 100%;
+  padding: var(--space-lofi-4, 16px);
+  margin-bottom: var(--space-lofi-2, 8px);
+  text-align: left;
+  font-family: inherit;
+  background: var(--color-lofi-surface, #fff);
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-md, 10px);
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+  box-sizing: border-box;
+}
+
+.wire-selectable-card:hover:not(.is-disabled) {
+  border-color: var(--color-lofi-stroke-strong, #8c8c85);
+  background: var(--color-lofi-surface-hover, #fafaf8);
+}
+
+.wire-selectable-card.is-selected {
+  border-color: var(--color-lofi-ink, #2d2d2a);
+  border-width: 3px;
+  background: var(--color-lofi-surface, #fff);
+}
+
+.wire-selectable-card.is-disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.wire-selectable-card__icon {
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.wire-selectable-card__icon--check {
+  background: var(--color-lofi-success, #4a7c59);
+  color: #fff;
+}
+
+.wire-selectable-card__icon--empty {
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  background: var(--color-lofi-surface, #fff);
+}
+
+.wire-selectable-card__body {
+  flex: 1;
+  min-width: 0;
+}
+
+.wire-selectable-card__title {
+  font-weight: 700;
+  font-size: 1rem;
+  line-height: 1.25;
+  margin: 0 0 var(--space-lofi-1, 4px) 0;
+}
+
+.wire-selectable-card__detail {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0;
+}
+
+.wire-selectable-card.is-disabled .wire-selectable-card__detail {
+  color: var(--color-lofi-ink-placeholder, #9c9c98);
+}
+
+.wire-selectable-pill {
+  flex-shrink: 0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  border-radius: 999px;
+}
+
+.wire-selectable-pill--success {
+  background: #e6f4ea;
+  color: var(--color-lofi-success, #4a7c59);
+}
+
+.wire-selectable-pill--muted {
+  background: var(--color-lofi-surface-hover, #fafaf8);
+  color: var(--color-lofi-ink-muted, #6b6b68);
+}

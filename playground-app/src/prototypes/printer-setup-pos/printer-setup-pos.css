@@ -1,0 +1,724 @@
+/**
+ * ROLLER POS — Printer & Production Setup (Hi-Fi)
+ * Uses POS design tokens from pos-theme.css (var(--color-pos-*)).
+ */
+
+/* -------------------------------------------------------------------------
+   Root & layout
+   ------------------------------------------------------------------------- */
+.printer-pos {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  font-size: var(--text-pos-medium, 1rem);
+  line-height: var(--text-pos-medium--line-height, 1.5);
+  background-color: var(--color-pos-canvas, #f8f9fa);
+  color: var(--color-pos-text-primary, #252527);
+}
+
+.printer-pos__body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+}
+
+.printer-pos__header {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 1rem;
+  background-color: var(--color-pos-header-bar, #e9ecef);
+  border-bottom: 1px solid var(--color-pos-default-border, #d4d4d6);
+}
+
+.printer-pos__back {
+  font-size: var(--text-pos-medium, 1rem);
+  font-weight: 600;
+  color: var(--color-pos-text-link, #006df2);
+  text-decoration: none;
+}
+
+.printer-pos__back:hover {
+  color: var(--color-pos-text-link-hover, #024696);
+}
+
+.printer-pos__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.printer-pos__nav-btn {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: var(--color-pos-text-secondary, #72727a);
+  background: var(--color-pos-text-inverted, #fff);
+  border: 1px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.printer-pos__nav-btn:hover {
+  color: var(--color-pos-text-primary, #252527);
+  border-color: var(--color-pos-brand-secondary-border, #6bb6ff);
+  background: var(--color-pos-brand-secondary-surface, #f0f7ff);
+}
+
+.printer-pos__nav-btn.is-active {
+  color: var(--color-pos-brand-on-fill, #fff);
+  background: var(--color-pos-brand-fill, #18b159);
+  border-color: var(--color-pos-brand-fill, #18b159);
+}
+
+.printer-pos__title {
+  font-size: var(--text-pos-large, 1.125rem);
+  font-weight: 600;
+}
+
+.printer-pos__main {
+  flex: 1;
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  width: 100%;
+}
+
+/* -------------------------------------------------------------------------
+   Page content
+   ------------------------------------------------------------------------- */
+.printer-pos__page-title {
+  font-size: var(--text-pos-large, 1.125rem);
+  font-weight: 600;
+  color: var(--color-pos-text-primary, #252527);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-pos__subtitle {
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 1rem 0;
+}
+
+.printer-pos__hint {
+  font-size: 0.875rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 1rem 0;
+}
+
+.printer-pos__wizard-subtitle {
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 1rem 0;
+}
+
+/* -------------------------------------------------------------------------
+   Cards
+   ------------------------------------------------------------------------- */
+.printer-pos__card {
+  padding: 1.25rem;
+  background-color: var(--color-pos-text-inverted, #fff);
+  border: 1px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.printer-pos__card-title {
+  font-size: var(--text-pos-medium, 1rem);
+  font-weight: 600;
+  color: var(--color-pos-text-primary, #252527);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-pos__card-body {
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 0.75rem 0;
+}
+
+.printer-pos__card-body--lead {
+  font-size: var(--text-pos-medium, 1rem);
+  color: var(--color-pos-text-primary, #252527);
+  margin-bottom: 1.25rem;
+}
+
+.printer-pos__card--entry {
+  text-align: center;
+  padding: 2rem 1.5rem;
+}
+
+.printer-pos__placeholder {
+  background: var(--color-pos-core-neutral-surface, #fafafa);
+  border: 1px dashed var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  font-size: 0.875rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* -------------------------------------------------------------------------
+   Buttons
+   ------------------------------------------------------------------------- */
+.printer-pos__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.printer-pos__btn {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-pos-medium, 1rem);
+  font-weight: 500;
+  border: 1px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  background-color: var(--color-pos-text-inverted, #fff);
+  color: var(--color-pos-text-primary, #252527);
+  cursor: pointer;
+}
+
+.printer-pos__btn:hover {
+  border-color: var(--color-pos-brand-secondary-border, #6bb6ff);
+  background-color: var(--color-pos-brand-secondary-surface, #f0f7ff);
+  color: var(--color-pos-brand-secondary-text-bright, #3594ff);
+}
+
+.printer-pos__btn--primary {
+  background-color: var(--color-pos-brand-fill, #18b159);
+  color: var(--color-pos-brand-on-fill, #fff);
+  border-color: var(--color-pos-brand-fill, #18b159);
+}
+
+.printer-pos__btn--primary:hover:not(:disabled) {
+  background-color: var(--color-pos-brand-fill-hover, #158741);
+  border-color: var(--color-pos-brand-fill-hover, #158741);
+  color: var(--color-pos-brand-on-fill, #fff);
+}
+
+.printer-pos__btn--primary:disabled {
+  background-color: var(--color-pos-brand-fill-disabled, #d4d4d6);
+  border-color: var(--color-pos-brand-fill-disabled, #d4d4d6);
+  color: var(--color-pos-brand-on-fill-disabled, #a1a1a7);
+  cursor: not-allowed;
+}
+
+.printer-pos__btn--ghost {
+  background: transparent;
+  border-color: var(--color-pos-button-ghost-border, #dee2e6);
+  color: var(--color-pos-button-ghost-text, #495057);
+}
+
+.printer-pos__btn--ghost:hover {
+  background-color: var(--color-pos-canvas, #f8f9fa);
+  border-color: var(--color-pos-default-border, #d4d4d6);
+  color: var(--color-pos-text-primary, #252527);
+}
+
+.printer-pos__btn--sm {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.8125rem;
+}
+
+.printer-pos__btn--lg {
+  padding: 0.75rem 1.5rem;
+  font-size: 1.0625rem;
+}
+
+.printer-pos__btn-continue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* -------------------------------------------------------------------------
+   Progress bar & stepper
+   ------------------------------------------------------------------------- */
+.printer-pos__progress-wrap {
+  margin-bottom: 1rem;
+}
+
+.printer-pos__progress-bar {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  background: var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.printer-pos__progress-segment {
+  flex: 1;
+  background: var(--color-pos-default-border, #d4d4d6);
+  border-radius: 2px;
+}
+
+.printer-pos__progress-segment.is-filled {
+  background: var(--color-pos-brand-fill, #18b159);
+}
+
+.printer-pos__stepper {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.printer-pos__step {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  text-align: center;
+  background: var(--color-pos-text-inverted, #fff);
+  border: 1px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  color: var(--color-pos-text-secondary, #72727a);
+}
+
+.printer-pos__step.is-active {
+  border-color: var(--color-pos-brand-fill, #18b159);
+  background: var(--color-pos-brand-surface, #f0fff4);
+  color: var(--color-pos-brand-text, #105d2b);
+}
+
+.printer-pos__step.is-done {
+  border-color: var(--color-pos-brand-fill, #18b159);
+  color: var(--color-pos-brand-text, #105d2b);
+}
+
+/* -------------------------------------------------------------------------
+   Tiles
+   ------------------------------------------------------------------------- */
+.printer-pos__tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.printer-pos__tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  padding: 1rem;
+  background: var(--color-pos-text-inverted, #fff);
+  border: 1px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  text-align: center;
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-primary, #252527);
+}
+
+.printer-pos__tile:hover {
+  border-color: var(--color-pos-brand-fill, #18b159);
+  background: var(--color-pos-brand-surface, #f0fff4);
+  color: var(--color-pos-brand-text, #105d2b);
+}
+
+.printer-pos__tile.is-selected {
+  border-color: var(--color-pos-brand-fill, #18b159);
+  background: var(--color-pos-brand-surface, #f0fff4);
+  color: var(--color-pos-brand-text, #105d2b);
+  border-width: 2px;
+}
+
+.printer-pos__tile-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.35rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.printer-pos__tile-icon svg {
+  width: 1em;
+  height: 1em;
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Device discovery list
+   ------------------------------------------------------------------------- */
+.printer-pos__device-count {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--color-pos-text-primary, #252527);
+  margin: 0 0 0.75rem 0;
+}
+
+.printer-pos__device-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.printer-pos__device-list li {
+  margin-bottom: 0.5rem;
+}
+
+.printer-pos__device-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  text-align: left;
+  background: var(--color-pos-text-inverted, #fff);
+  border: 1px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+  cursor: pointer;
+}
+
+.printer-pos__device-card:hover:not(.is-disabled) {
+  border-color: var(--color-pos-brand-secondary-border, #6bb6ff);
+  background: var(--color-pos-brand-secondary-surface, #f0f7ff);
+}
+
+.printer-pos__device-card.is-selected {
+  border-color: var(--color-pos-brand-fill, #18b159);
+  background: var(--color-pos-brand-surface, #f0fff4);
+}
+
+.printer-pos__device-card.is-disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  background: var(--color-pos-core-neutral-surface, #fafafa);
+}
+
+.printer-pos__device-check {
+  flex-shrink: 0;
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(--color-pos-brand-on-fill, #fff);
+}
+
+.printer-pos__device-check.is-ok {
+  background: var(--color-pos-brand-fill, #18b159);
+  border-color: var(--color-pos-brand-fill, #18b159);
+}
+
+.printer-pos__device-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.printer-pos__device-name {
+  font-weight: 600;
+  color: var(--color-pos-text-primary, #252527);
+  margin: 0 0 0.15rem 0;
+}
+
+.printer-pos__device-detail {
+  font-size: 0.875rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0;
+}
+
+.printer-pos__pill {
+  flex-shrink: 0;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 999px;
+}
+
+.printer-pos__pill--success {
+  background: var(--color-pos-brand-surface, #f0fff4);
+  color: var(--color-pos-brand-text, #105d2b);
+}
+
+.printer-pos__pill--warning {
+  background: var(--color-pos-warning-surface, #fffaf0);
+  color: var(--color-pos-warning-text-secondary, #5c3816);
+}
+
+.printer-pos__pill--muted {
+  background: var(--color-pos-core-neutral-surface, #fafafa);
+  color: var(--color-pos-text-secondary, #72727a);
+}
+
+/* -------------------------------------------------------------------------
+   Table
+   ------------------------------------------------------------------------- */
+.printer-pos__table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.printer-pos__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9375rem;
+}
+
+.printer-pos__table th,
+.printer-pos__table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-pos-default-border, #d4d4d6);
+}
+
+.printer-pos__table th {
+  font-weight: 600;
+  color: var(--color-pos-text-secondary, #72727a);
+}
+
+.printer-pos__table td {
+  color: var(--color-pos-text-primary, #252527);
+}
+
+/* Route step: categories for this printer */
+.printer-pos__route-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+.printer-pos__category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.printer-pos__category-list li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--color-pos-default-border, #d4d4d6);
+}
+
+.printer-pos__category-list li:last-child {
+  border-bottom: none;
+}
+
+.printer-pos__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: var(--text-pos-medium, 1rem);
+  color: var(--color-pos-text-primary, #252527);
+}
+
+.printer-pos__checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--color-pos-brand-fill, #18b159);
+}
+
+/* -------------------------------------------------------------------------
+   Dashboard sections
+   ------------------------------------------------------------------------- */
+.printer-pos__dashboard-subtitle {
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 1.25rem 0;
+}
+
+.printer-pos__section {
+  margin-bottom: 2rem;
+}
+
+.printer-pos__section-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 0.75rem 0;
+  text-transform: uppercase;
+}
+
+/* Printer cards grid */
+.printer-pos__printer-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.printer-pos__printer-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: var(--color-pos-text-inverted, #fff);
+  border: 1px solid var(--color-pos-default-border, #d4d4d6);
+  border-radius: 0.5rem;
+}
+
+.printer-pos__printer-card--offline {
+  border-color: var(--color-pos-warning-border, #ffd464);
+  background: var(--color-pos-warning-surface, #fffaf0);
+  border-width: 2px;
+}
+
+.printer-pos__printer-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.printer-pos__printer-card-name {
+  font-weight: 600;
+  font-size: var(--text-pos-medium, 1rem);
+  color: var(--color-pos-text-primary, #252527);
+  margin: 0 0 0.15rem 0;
+}
+
+.printer-pos__printer-card-model {
+  font-size: 0.8125rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-pos__printer-card-meta {
+  font-size: 0.8125rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-pos__printer-card-routes {
+  font-size: 0.8125rem;
+  margin: 0 0 1rem 0;
+  padding-left: 1rem;
+  color: var(--color-pos-text-primary, #252527);
+}
+
+.printer-pos__printer-card-routes li {
+  margin-bottom: 0.2rem;
+}
+
+.printer-pos__printer-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* Routing summary */
+.printer-pos__routing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .printer-pos__routing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.printer-pos__routing-column-title {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 0.5rem 0;
+  text-transform: uppercase;
+}
+
+.printer-pos__routing-column-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-primary, #252527);
+}
+
+.printer-pos__routing-column-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--color-pos-default-border, #d4d4d6);
+}
+
+.printer-pos__routing-column-list li:last-child {
+  border-bottom: none;
+}
+
+.printer-pos__testing-desc {
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0 0 0.75rem 0;
+}
+
+/* -------------------------------------------------------------------------
+   Error state
+   ------------------------------------------------------------------------- */
+.printer-pos__error-box {
+  padding: 1rem;
+  background: var(--color-pos-critical-surface, #fff1f0);
+  border: 1px solid var(--color-pos-critical-border, #ed4c4b);
+  border-radius: 0.5rem;
+  margin: 1rem 0;
+}
+
+.printer-pos__error-title {
+  font-weight: 600;
+  color: var(--color-pos-critical-text, #66171b);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-pos__error-body {
+  font-size: 0.9375rem;
+  color: var(--color-pos-text-secondary, #72727a);
+  margin: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Order confirmation
+   ------------------------------------------------------------------------- */
+.printer-pos__order-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.printer-pos__order-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--color-pos-default-border, #d4d4d6);
+  font-size: 0.9375rem;
+}
+
+.printer-pos__order-line:last-child {
+  border-bottom: none;
+}
+
+.printer-pos__order-dest {
+  font-weight: 600;
+  min-width: 8rem;
+}
+
+.printer-pos__order-dest--kitchen {
+  color: var(--color-pos-brand-text, #105d2b);
+}
+
+.printer-pos__order-dest--bar {
+  color: var(--color-pos-brand-secondary-text-secondary, #013065);
+}
+
+.printer-pos__order-dest--none {
+  color: var(--color-pos-text-secondary, #72727a);
+}
+
+.printer-pos__order-sent {
+  margin-top: 1rem;
+  padding: 0.75rem;
+  background: var(--color-pos-brand-surface, #f0fff4);
+  border: 1px solid var(--color-pos-brand-border, #18b159);
+  border-radius: 0.5rem;
+  color: var(--color-pos-brand-text, #105d2b);
+}

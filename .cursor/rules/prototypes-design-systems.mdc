@@ -1,0 +1,64 @@
+---
+description: Reference correct design system when creating or editing prototypes (POS, VM, lo-fi).
+globs: playground-app/src/prototypes/**/*
+alwaysApply: false
+---
+
+# Prototypes — Design System Reference
+
+When creating or editing a prototype in `playground-app/src/prototypes/`, use the **design system** that matches the product. Do not mix systems or invent new tokens.
+
+## Which system to use
+
+| Product / intent | Design system | Theme (tokens) | Demo CSS (layout/styling) | Token doc | Figma (visual reference) | Reference screenshots |
+|------------------|---------------|----------------|---------------------------|-----------|---------------------------|------------------------|
+| **POS** (Point of Sale, F&B, checkout) | POS | `src/styles/pos-theme.css` | `prototypes/pos-demo/pos-demo.css` | `docs/design-tokens/POS-design-token-structure.md` | [Serve — POS Discovery & Components](https://www.figma.com/design/QGzNBmoPd3KeZO00p8h37V/%F0%9F%8E%8A-Serve---POS-Discovery--Components-?node-id=20004583-1591) | `docs/reference-screenshots/pos/` |
+| **VM** (Venue Manager, dashboard, settings) | VM | `src/styles/vm-theme.css` | `prototypes/vm-demo/vm-demo.css` | `docs/design-tokens/VM-design-token-structure.md` | `docs/reference-screenshots/vm/` |
+| **Lo-fi / wireframe** (Balsamiq-style, low fidelity) | Lo-fi | `src/styles/lo-fi-theme.css` + `lo-fi.css` | `prototypes/lo-fi-demo/lo-fi-demo.css` | — | — |
+
+## Reference screenshots
+
+For **UI consistency**, use the reference screenshots alongside Figma and token docs:
+
+- **POS:** `docs/reference-screenshots/pos/` — e.g. `POS-order-packages.png`, `POS-ordering-food-and-bev.png`, `POS-settings-page.png`. Use for layout, navigation, and component patterns when building POS prototypes.
+- **VM:** `docs/reference-screenshots/vm/` — e.g. `VM-Homepage.png`, `VM-Menu-UI.png`. Use for layout, sidebar, and component patterns when building VM prototypes.
+
+When creating or editing a prototype, refer to the relevant screenshots (and Figma when available) so layout, spacing, and behaviour match the product.
+
+## How to reference correctly
+
+1. **New prototype using POS**  
+   - Create `prototypes/<name>/index.tsx` and `prototypes/<name>/<name>.css`.  
+   - **Refer to the Figma design** and **reference screenshots** in `docs/reference-screenshots/pos/` for visual fidelity: [Serve — POS Discovery & Components](https://www.figma.com/design/QGzNBmoPd3KeZO00p8h37V/%F0%9F%8E%8A-Serve---POS-Discovery--Components-?node-id=20004583-1591) — match layout, spacing, colours, and component behaviour.  
+   - In the CSS, use **CSS variables** from the POS theme: `var(--color-pos-canvas)`, `var(--color-pos-brand-fill)`, etc. (see `pos-theme.css` and `pos-demo.css` for the full set).  
+   - **Use the shared POS side nav** for all POS prototypes: import `PosSideNav` from `src/components/pos` and `src/components/pos/pos.css`. Lay out the page as `PosSideNav` (left) + main content (right). Use `panelTitle` and `panelItems` for Settings-style screens (e.g. Print stations); omit the panel for order/checkout flows.  
+   - Copy other layout/component patterns from `pos-demo/` (e.g. header, product grid, cart) if the flow is similar.
+
+2. **New prototype using VM**  
+   - Same folder pattern. Use **VM variables** in your CSS: `var(--color-vm-surface-light)`, `var(--color-vm-roller-blue-40)`, etc.  
+   - **Refer to reference screenshots** in `docs/reference-screenshots/vm/` for layout and component patterns. Reuse layout/component patterns from `vm-demo/` (sidebar, welcome block, cards, collapsible, checklist steps).
+
+3. **New prototype using lo-fi**  
+   - Use **lo-fi variables**: `var(--color-lofi-bg)`, `var(--color-lofi-ink)`, etc.  
+   - Reuse **component classes** from `src/styles/lo-fi.css`: `.lo-fi-scope`, `.wire-card`, `.wire-btn`, `.wire-input`, `.wire-placeholder`, `.wire-list`, and the **card style system** for separation and division: `.wire-card--item` (list/item cards, e.g. products), `.wire-card--section` (grouped blocks), `.lofi-card__header` / `.wire-card__section-header` (section card headers), `.lofi-card-stack` (vertical stack of cards with consistent gap), `.lofi-card__divider` / `.wire-card__divider` (in-card divider).  
+   - Use the card system so UI elements are clearly separated (e.g. one card per product, section cards for categories, dividers inside cards where needed)—don’t rely on flat blocks of content.  
+   - Add page layout in your own `lo-fi-demo.css`-style CSS if needed.
+
+4. **Register the prototype**  
+   - Add the new component to `src/prototypeRegistry.tsx`: import, add to `prototypes` array with `slug`, `title`, `description`, `tags`, and `element`.
+
+## Icons
+
+- **Use [react-icons](https://react-icons.github.io/react-icons/) for all icons.** Do not use emojis, Unicode symbols (e.g. ⌕, ◆, ★), or placeholder text for icons.
+- Prefer a consistent set within a prototype (e.g. `react-icons/hi` for Heroicons Outline, or `react-icons/io5` for Ionicons 5). Use outline variants for nav and actions unless the design specifies filled.
+- When rendering icon components inside custom elements, ensure the wrapper uses `display: inline-flex`, `align-items: center`, `justify-content: center`, and that `svg { width: 1em; height: 1em; }` so icons scale with the parent font-size.
+
+## Rules
+
+- **POS prototypes:** For a closer look at what POS looks like, refer to the Figma design **Serve — POS Discovery & Components** (link in table above) and the **reference screenshots** in `docs/reference-screenshots/pos/`. Align colours, typography, spacing, and component patterns with those; keep using `pos-theme.css` tokens. **Use the shared `PosSideNav`** from `src/components/pos` in every POS prototype for consistent sidebar navigation (icon strip + optional Settings panel).
+- **VM prototypes:** Refer to the **reference screenshots** in `docs/reference-screenshots/vm/` for layout and UI consistency when building Venue Manager prototypes.
+- **Do not** use Tailwind utility classes for product-specific colours in new prototypes; use **CSS-only** with `var(--color-pos-*)` / `var(--color-vm-*)` / `var(--color-lofi-*)` so styling is reliable.
+- **Do** add a fallback in `var()` when using theme variables (e.g. `var(--color-pos-canvas, #f8f9fa)`) so the prototype still works if the theme load order changes.
+- **Do** mirror the structure of the reference demo (pos-demo, vm-demo, or lo-fi-demo) when the prototype is for that product, so layout and behaviour stay aligned with the real app.
+- **Do** use the lo-fi card style system (`.wire-card--item`, `.wire-card--section`, `.lofi-card-stack`, `.lofi-card__divider`, etc.) for clear separation and division between UI elements in lo-fi prototypes; avoid flat, undifferentiated blocks.
+- **Do** use react-icons for all iconography in prototypes and shared components (e.g. `PosSideNav`, nav items, role tiles, buttons); do not use emojis or character symbols.

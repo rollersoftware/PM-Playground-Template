@@ -1,0 +1,474 @@
+/**
+ * ROLLER POS — Printer Setup & Production (Lo-Fi Wireframes)
+ * Uses lo-fi design tokens; wire-* from global lo-fi.css.
+ */
+
+.printer-lofi {
+  min-height: 100vh;
+  font-family: var(--font-lofi-sans, "Comic Neue", cursive, system-ui, sans-serif);
+  background-color: var(--color-lofi-bg, #f5f5f3);
+  color: var(--color-lofi-ink, #2d2d2a);
+}
+
+.printer-lofi__header {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.75rem 1rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  background-color: var(--color-lofi-surface, #fff);
+}
+
+.printer-lofi__back {
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  color: var(--color-lofi-accent, #4a90d9);
+  text-decoration: none;
+}
+
+.printer-lofi__back:hover {
+  color: var(--color-lofi-accent-hover, #357abd);
+}
+
+.printer-lofi__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+.printer-lofi__nav-btn {
+  padding: 0.35rem 0.6rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  font-weight: 700;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  background: var(--color-lofi-surface, #fff);
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-sm, 6px);
+  cursor: pointer;
+}
+
+.printer-lofi__nav-btn:hover,
+.printer-lofi__nav-btn.is-active {
+  color: var(--color-lofi-ink, #2d2d2a);
+  border-color: var(--color-lofi-stroke-strong, #8c8c85);
+  background: var(--color-lofi-surface-hover, #fafaf8);
+}
+
+.printer-lofi__main {
+  max-width: 52rem;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+}
+
+.printer-lofi__title {
+  font-size: var(--text-lofi-heading, 1.5rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-lofi__annot {
+  font-size: 0.85rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  font-style: italic;
+  margin: 0 0 1rem 0;
+}
+
+/* Progress bar (4 steps) */
+.printer-lofi__progress-wrap {
+  margin-bottom: 1rem;
+}
+
+.printer-lofi__progress-bar {
+  display: flex;
+  gap: 2px;
+  height: 8px;
+  background: var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-sm, 6px);
+  overflow: hidden;
+}
+
+.printer-lofi__progress-segment {
+  flex: 1;
+  background: var(--color-lofi-stroke, #b3b3ad);
+  border-radius: 2px;
+}
+
+.printer-lofi__progress-segment.is-filled {
+  background: var(--color-lofi-accent, #4a90d9);
+}
+
+/* Discover: device list cards */
+.printer-lofi__discover-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 1rem 0;
+}
+
+.printer-lofi__discover-count {
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+}
+
+/* Primary action with arrow */
+.printer-lofi__btn-continue {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Stepper */
+.printer-lofi__stepper {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.printer-lofi__step {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-align: center;
+  background: var(--color-lofi-surface, #fff);
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-sm, 6px);
+}
+
+.printer-lofi__step.is-active {
+  border-color: var(--color-lofi-accent, #4a90d9);
+  background: var(--color-lofi-highlight, #fff9e6);
+}
+
+.printer-lofi__step.is-done {
+  border-color: var(--color-lofi-success, #4a7c59);
+  color: var(--color-lofi-success, #4a7c59);
+}
+
+/* Tiles / cards */
+.printer-lofi__tiles {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 0.75rem;
+}
+
+.printer-lofi__tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 5rem;
+  padding: 1rem;
+  background: var(--color-lofi-surface, #fff);
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-md, 10px);
+  cursor: pointer;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.printer-lofi__tile:hover {
+  border-color: var(--color-lofi-accent, #4a90d9);
+  background: var(--color-lofi-surface-hover, #fafaf8);
+}
+
+.printer-lofi__tile.is-selected {
+  border-color: var(--color-lofi-accent, #4a90d9);
+  background: var(--color-lofi-highlight, #fff9e6);
+}
+
+.printer-lofi__tile-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.35rem;
+}
+
+/* Status */
+.printer-lofi__status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.85rem;
+  font-weight: 700;
+}
+
+.printer-lofi__status--online {
+  color: var(--color-lofi-success, #4a7c59);
+}
+
+.printer-lofi__status--offline {
+  color: var(--color-lofi-error, #c75050);
+}
+
+/* Routing table */
+.printer-lofi__table-wrap {
+  overflow-x: auto;
+  margin: 1rem 0;
+}
+
+.printer-lofi__table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.9rem;
+}
+
+.printer-lofi__table th,
+.printer-lofi__table td {
+  padding: 0.5rem 0.75rem;
+  text-align: left;
+  border-bottom: 1px solid var(--color-lofi-stroke, #b3b3ad);
+}
+
+.printer-lofi__table th {
+  font-weight: 700;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+}
+
+/* Route step: categories for this printer */
+.printer-lofi__category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1rem 0;
+}
+
+.printer-lofi__category-list li {
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--color-lofi-stroke, #b3b3ad);
+}
+
+.printer-lofi__category-list li:last-child {
+  border-bottom: none;
+}
+
+.printer-lofi__checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: var(--text-lofi-body, 1rem);
+  color: var(--color-lofi-ink, #2d2d2a);
+}
+
+.printer-lofi__checkbox {
+  width: 1.125rem;
+  height: 1.125rem;
+  accent-color: var(--color-lofi-accent, #4a90d9);
+}
+
+/* Actions row */
+.printer-lofi__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+/* Section spacing */
+.printer-lofi__section + .printer-lofi__section {
+  margin-top: 1.5rem;
+}
+
+.printer-lofi__section-title {
+  font-size: var(--text-lofi-body, 1rem);
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-lofi__section-body {
+  font-size: 0.9rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 0.75rem 0;
+}
+
+/* Order confirmation blocks */
+.printer-lofi__order-line {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px dashed var(--color-lofi-stroke, #b3b3ad);
+  font-size: 0.9rem;
+}
+
+.printer-lofi__order-line:last-child {
+  border-bottom: none;
+}
+
+.printer-lofi__order-dest {
+  font-weight: 700;
+  min-width: 8rem;
+}
+
+.printer-lofi__order-dest--kitchen { color: var(--color-lofi-success, #4a7c59); }
+.printer-lofi__order-dest--bar { color: var(--color-lofi-accent, #4a90d9); }
+.printer-lofi__order-dest--none { color: var(--color-lofi-ink-muted, #6b6b68); }
+
+/* Error state */
+.printer-lofi__error-box {
+  padding: 1rem;
+  background: #fef2f2;
+  border: 2px solid var(--color-lofi-error, #c75050);
+  border-radius: var(--radius-lofi-md, 10px);
+  margin: 1rem 0;
+}
+
+.printer-lofi__error-title {
+  font-weight: 700;
+  color: var(--color-lofi-error, #c75050);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-lofi__error-body {
+  font-size: 0.9rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0;
+}
+
+/* ========== Production Overview Dashboard ========== */
+.printer-lofi__dashboard-subtitle {
+  font-size: 0.95rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 1.25rem 0;
+}
+
+.printer-lofi__dashboard-section {
+  margin-bottom: 2rem;
+}
+
+.printer-lofi__dashboard-section-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 0.75rem 0;
+}
+
+/* Printer cards grid */
+.printer-lofi__printer-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.printer-lofi__printer-card {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  background: var(--color-lofi-surface, #fff);
+  border: 2px solid var(--color-lofi-stroke, #b3b3ad);
+  border-radius: var(--radius-lofi-md, 10px);
+}
+
+.printer-lofi__printer-card--offline {
+  background: #fefce8;
+  border-color: #eab308;
+  border-width: 3px;
+}
+
+.printer-lofi__printer-card-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.printer-lofi__printer-card-name {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0 0 0.15rem 0;
+}
+
+.printer-lofi__printer-card-model {
+  font-size: 0.8rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-lofi__printer-card-pill {
+  display: inline-block;
+  padding: 0.2rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  border-radius: 999px;
+  margin-bottom: 0.75rem;
+  width: fit-content;
+}
+
+.printer-lofi__printer-card-pill--online {
+  background: #e6f4ea;
+  color: var(--color-lofi-success, #4a7c59);
+}
+
+.printer-lofi__printer-card-pill--offline {
+  background: #fef9c3;
+  color: #a16207;
+}
+
+.printer-lofi__printer-card-assign {
+  font-size: 0.8rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-lofi__printer-card-routes {
+  font-size: 0.8rem;
+  margin: 0 0 1rem 0;
+  padding-left: 1rem;
+  color: var(--color-lofi-ink, #2d2d2a);
+}
+
+.printer-lofi__printer-card-routes li {
+  margin-bottom: 0.2rem;
+}
+
+.printer-lofi__printer-card-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: auto;
+}
+
+/* Routing summary two-column */
+.printer-lofi__routing-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+@media (max-width: 520px) {
+  .printer-lofi__routing-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.printer-lofi__routing-column-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 0.5rem 0;
+}
+
+.printer-lofi__routing-column-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.9rem;
+}
+
+.printer-lofi__routing-column-list li {
+  padding: 0.35rem 0;
+  border-bottom: 1px solid var(--color-lofi-stroke, #b3b3ad);
+}
+
+.printer-lofi__routing-column-list li:last-child {
+  border-bottom: none;
+}
+
+/* Testing section */
+.printer-lofi__testing-desc {
+  font-size: 0.9rem;
+  color: var(--color-lofi-ink-muted, #6b6b68);
+  margin: 0 0 0.75rem 0;
+}

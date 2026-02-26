@@ -1,0 +1,158 @@
+/**
+ * POS Design System — Tailwind v4 theme
+ *
+ * Visual reference (what POS looks like):
+ *   Figma — Serve — POS Discovery & Components
+ *   https://www.figma.com/design/QGzNBmoPd3KeZO00p8h37V/%F0%9F%8E%8A-Serve---POS-Discovery--Components-?node-id=20004583-1591
+ *
+ * Token structure (variable names / hierarchy):
+ *   docs/design-tokens/POS-design-token-structure.md
+ *   (Figma: Serve — POS Components, for variable collections.)
+ *
+ * Use these tokens when building POS components or prototypes so they adhere
+ * to the POS design system. Match layout, spacing, and semantics to the
+ * Discovery file above.
+ *
+ * Usage:
+ *   - Colors:  var(--color-pos-brand-fill), var(--color-pos-text-primary), etc.
+ *   - Type:    var(--text-pos-medium), var(--text-pos-large)
+ *   - Prefer semantic tokens (pos-text-*, pos-brand-*, pos-nav-*) over core-*.
+ */
+
+@theme {
+  /* ========== Typography (Typeface/size) ========== */
+  --text-pos-medium: 1rem; /* 16px – body/default */
+  --text-pos-medium--line-height: 1.5;
+  --text-pos-large: 1.125rem; /* 18px – large copy */
+  --text-pos-large--line-height: 1.5;
+
+  /* ========== Text (rdl/pos/colour/text) ========== */
+  --color-pos-text-primary: #252527;
+  --color-pos-text-secondary: #72727a;
+  --color-pos-text-disabled: #a1a1a7;
+  --color-pos-text-inverted: #ffffff;
+  --color-pos-text-link: #006df2;
+  --color-pos-text-link-hover: #024696;
+  --color-pos-text-link-active: #00264d;
+
+  /* ========== Default / neutral UI (rdl/pos/colour/default) ========== */
+  --color-pos-default-border: #d4d4d6;
+  --color-pos-default-icon: #252527;
+  --color-pos-default-icon-disabled: #a1a1a7;
+
+  /* ========== Brand primary – green (rdl/pos/colour/brand → core/green) ========== */
+  --color-pos-brand-fill: #18b159;
+  --color-pos-brand-fill-hover: #158741;
+  --color-pos-brand-fill-pressed: #105d2b;
+  --color-pos-brand-fill-disabled: #d4d4d6;
+  --color-pos-brand-on-fill: #ffffff;
+  --color-pos-brand-on-fill-disabled: #a1a1a7;
+  --color-pos-brand-surface: #f0fff4;
+  --color-pos-brand-surface-hover: #d8fde4;
+  --color-pos-brand-text: #105d2b;
+  --color-pos-brand-border: #18b159;
+  --color-pos-brand-icon: #18b159;
+
+  /* ========== Brand secondary – blue (rdl/pos/colour/brand-secondary) ========== */
+  --color-pos-brand-secondary-fill: #006df2;
+  --color-pos-brand-secondary-fill-hover: #024696;
+  --color-pos-brand-secondary-fill-pressed: #013065;
+  --color-pos-brand-secondary-on-fill: #ffffff;
+  --color-pos-brand-secondary-surface: #f0f7ff;
+  --color-pos-brand-secondary-surface-hover: #d0e8ff;
+  --color-pos-brand-secondary-text: #001e3d;
+  --color-pos-brand-secondary-text-secondary: #013065;
+  --color-pos-brand-secondary-text-bright: #3594ff;
+  --color-pos-brand-secondary-border: #6bb6ff;
+  --color-pos-brand-secondary-border-hover: #035dc8;
+  --color-pos-brand-secondary-icon: #035dc8;
+
+  /* ========== Warning (rdl/pos/colour/warning) ========== */
+  --color-pos-warning-on-fill: #36363a;
+  --color-pos-warning-fill: #ffd464;
+  --color-pos-warning-fill-hover: #855a25;
+  --color-pos-warning-fill-pressed: #5c3816;
+  --color-pos-warning-surface: #fffaf0;
+  --color-pos-warning-surface-hover: #fff6d8;
+  --color-pos-warning-text: #331b0a;
+  --color-pos-warning-text-secondary: #5c3816;
+  --color-pos-warning-text-bright: #f2b140;
+  --color-pos-warning-border: #ffd464;
+  --color-pos-warning-icon: #f2b140;
+
+  /* ========== Critical (rdl/pos/colour/critical) ========== */
+  --color-pos-critical-on-fill: #ffffff;
+  --color-pos-critical-fill: #ed4c4b;
+  --color-pos-critical-fill-hover: #99272b;
+  --color-pos-critical-fill-pressed: #66171b;
+  --color-pos-critical-fill-secondary: #ff8a75;
+  --color-pos-critical-surface: #fff1f0;
+  --color-pos-critical-surface-hover: #ffe1dc;
+  --color-pos-critical-surface-secondary: #ed4c4b;
+  --color-pos-critical-text: #66171b;
+  --color-pos-critical-text-bright: #ed4c4b;
+  --color-pos-critical-border: #ed4c4b;
+  --color-pos-critical-border-hover: #cc3a3c;
+  --color-pos-critical-icon: #cc3a3c;
+
+  /* ========== Info (rdl/pos/colour/info) ========== */
+  --color-pos-info-on-fill: #ffffff;
+  --color-pos-info-fill: #a554ff;
+  --color-pos-info-fill-hover: #4a1599;
+  --color-pos-info-fill-pressed: #260566;
+  --color-pos-info-surface: #f7f0ff;
+  --color-pos-info-surface-hover: #f0dfff;
+  --color-pos-info-text: #10003d;
+  --color-pos-info-text-secondary: #260566;
+  --color-pos-info-border: #daa8ff;
+  --color-pos-info-border-hover: #7530cc;
+  --color-pos-info-icon: #7530cc;
+
+  /* ========== Navigation (rdl/pos/colour/nav) ========== */
+  --color-pos-nav-surface: #36363a;
+  --color-pos-nav-surface-hover: #252527;
+  --color-pos-nav-surface-click: #161618;
+  --color-pos-nav-surface-secondary: #18b159;
+  --color-pos-nav-surface-secondary-hover: #105d2b;
+  --color-pos-nav-surface-secondary-click: #0e481f;
+  --color-pos-nav-surface-tertiary: #252527;
+  --color-pos-nav-text: #a1a1a7;
+  --color-pos-nav-text-secondary: #ffffff;
+  --color-pos-nav-icon: #a1a1a7;
+  --color-pos-nav-icon-secondary: #ffffff;
+
+  /* ========== POS mapped / product-specific (rdl-POS) ========== */
+  --color-pos-page-heading: #183267;
+  --color-pos-surface-secondary: #18b159;
+
+  /* ========== Layout / shell (match live POS UI) ========== */
+  --color-pos-canvas: #f8f9fa;
+  --color-pos-header-bar: #e9ecef;
+  --color-pos-nav-sidebar: #343a40;
+  --color-pos-banner-warning-bg: #fd7e14;
+  --color-pos-banner-warning-text: #ffffff;
+  --color-pos-search-border-focus: #007bff;
+  --color-pos-product-card-accent-yellow: #ffc107;
+  --color-pos-product-card-accent-blue: #007bff;
+  --color-pos-product-card-accent-red: #dc3545;
+  --color-pos-sold-out: #6c757d;
+  --color-pos-button-ghost-bg: #ffffff;
+  --color-pos-button-ghost-text: #495057;
+  --color-pos-button-ghost-border: #dee2e6;
+
+  /* ========== Core primitives (for rare low-level use) ========== */
+  --color-pos-core-green-fill: #18b159;
+  --color-pos-core-green-surface: #f0fff4;
+  --color-pos-core-green-text: #105d2b;
+  --color-pos-core-neutral-text: #252527;
+  --color-pos-core-neutral-border: #d4d4d6;
+  --color-pos-core-neutral-surface: #fafafa;
+  --color-pos-core-red-fill: #ed4c4b;
+  --color-pos-core-red-surface: #fff1f0;
+  --color-pos-core-navy-text: #001f4a;
+  --color-pos-core-navy-surface: #f8f9fc;
+  --color-pos-core-cyan-fill: #06a8f0;
+  --color-pos-core-cyan-surface: #f0fbff;
+  --color-pos-core-orange-fill: #fb8026;
+  --color-pos-core-orange-surface: #fff6f0;
+}

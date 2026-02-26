@@ -1,0 +1,141 @@
+/**
+ * Layout and utility classes (Tailwind-style replacements).
+ * Use design tokens from tokens.css / theme files.
+ */
+
+/* Layout */
+.min-h-screen { min-height: 100vh; }
+.max-w-4xl { max-width: 56rem; }
+.max-w-md { max-width: 28rem; }
+.mx-auto { margin-left: auto; margin-right: auto; }
+.h-full { height: 100%; }
+.block { display: block; }
+
+/* Flexbox */
+.flex { display: flex; }
+.inline-flex { display: inline-flex; }
+.flex-wrap { flex-wrap: wrap; }
+.items-center { align-items: center; }
+.justify-center { justify-content: center; }
+.gap-2 { gap: var(--space-2); }
+.gap-3 { gap: var(--space-3); }
+.gap-4 { gap: var(--space-4); }
+
+/* Grid */
+.grid { display: grid; }
+.col-span-full { grid-column: 1 / -1; }
+
+@media (min-width: 640px) {
+  .sm\:grid-cols-2 { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* Spacing */
+.mt-1 { margin-top: var(--space-1); }
+.mt-3 { margin-top: var(--space-3); }
+.mb-4 { margin-bottom: var(--space-4); }
+.mb-6 { margin-bottom: var(--space-6); }
+.px-2 { padding-left: var(--space-2); padding-right: var(--space-2); }
+.py-0\.5 { padding-top: 0.125rem; padding-bottom: 0.125rem; }
+.pl-10 { padding-left: 2.5rem; }
+
+/* Container padding (token-based) */
+.px-\[var\(--space-6\)\] { padding-left: var(--space-6); padding-right: var(--space-6); }
+.py-\[var\(--space-8\)\] { padding-top: var(--space-8); padding-bottom: var(--space-8); }
+.py-\[var\(--space-4\)\] { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+.p-\[var\(--space-6\)\] { padding: var(--space-6); }
+
+/* Position */
+.relative { position: relative; }
+.absolute { position: absolute; }
+.sticky { position: sticky; }
+.top-0 { top: 0; }
+.left-3 { left: var(--space-3); }
+.top-1\/2 { top: 50%; }
+.-translate-y-1\/2 { transform: translateY(-50%); }
+.z-10 { z-index: 10; }
+
+/* Backgrounds */
+.bg-\[var\(--color-bg\)\] { background-color: var(--color-bg); }
+.bg-\[var\(--color-surface\)\] { background-color: var(--color-surface); }
+.bg-\[var\(--color-border\)\] { background-color: var(--color-border); }
+.bg-transparent { background-color: transparent; }
+
+/* Borders */
+.border { border-width: 1px; border-style: solid; }
+.border-b { border-bottom-width: 1px; border-bottom-style: solid; }
+.border-\[var\(--color-border\)\] { border-color: var(--color-border); }
+.border-transparent { border-color: transparent; }
+.border-\[var\(--color-primary\)\] { border-color: var(--color-primary); }
+
+/* Typography */
+.text-\[var\(--color-text\)\] { color: var(--color-text); }
+.text-\[var\(--color-text-muted\)\] { color: var(--color-text-muted); }
+.text-\[var\(--font-size-xs\)\] { font-size: var(--font-size-xs); }
+.text-\[var\(--font-size-sm\)\] { font-size: var(--font-size-sm); }
+.text-\[var\(--font-size-lg\)\] { font-size: var(--font-size-lg); }
+.text-\[var\(--font-size-xl\)\] { font-size: var(--font-size-xl); }
+.font-\[var\(--font-weight-medium\)\] { font-weight: var(--font-weight-medium); }
+.font-\[var\(--font-weight-semibold\)\] { font-weight: var(--font-weight-semibold); }
+
+/* Radius */
+.rounded-\[var\(--radius-sm\)\] { border-radius: var(--radius-sm); }
+.rounded-\[var\(--radius-md\)\] { border-radius: var(--radius-md); }
+.rounded-\[var\(--radius-lg\)\] { border-radius: var(--radius-lg); }
+
+/* Focus / hover */
+.pointer-events-none { pointer-events: none; }
+.focus\:outline-none:focus { outline: none; }
+.focus\:outline-none:focus-visible { outline: none; }
+.hover\:shadow-lg:hover { box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); }
+.hover\:opacity-90:hover { opacity: 0.9; }
+.hover\:border-\[var\(--color-primary\)\]:hover { border-color: var(--color-primary); }
+.hover\:bg-\[var\(--color-surface\)\]:hover { background-color: var(--color-surface); }
+.hover\:border-\[var\(--color-border\)\]:hover { border-color: var(--color-border); }
+.transition-colors { transition-property: color, background-color, border-color; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+.transition-shadow { transition-property: box-shadow; transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1); transition-duration: 150ms; }
+
+.focus-within\:ring-2:focus-within { box-shadow: 0 0 0 2px var(--color-primary); outline: none; }
+
+/* Screen reader only */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Stack spacing (space-y-6) */
+.space-y-6 > * + * { margin-top: var(--space-6); }
+.space-y-6 > *:first-child { margin-top: 0; }
+
+/* Override typography size in shell */
+.\!text-\[var\(--font-size-xl\)\] { font-size: var(--font-size-xl) !important; }
+.\!font-\[var\(--font-weight-semibold\)\] { font-weight: var(--font-weight-semibold) !important; }
+
+/* Button / Card / Input / Typography utilities */
+.cursor-pointer { cursor: pointer; }
+.text-\[var\(--color-primary-foreground\)\] { color: var(--color-primary-foreground); }
+.text-\[var\(--font-size-base\)\] { font-size: var(--font-size-base); }
+.px-\[var\(--space-4\)\] { padding-left: var(--space-4); padding-right: var(--space-4); }
+.py-\[var\(--space-2\)\] { padding-top: var(--space-2); padding-bottom: var(--space-2); }
+.py-\[var\(--space-3\)\] { padding-top: var(--space-3); padding-bottom: var(--space-3); }
+.px-\[var\(--space-6\)\] { padding-left: var(--space-6); padding-right: var(--space-6); }
+.py-\[var\(--space-4\)\] { padding-top: var(--space-4); padding-bottom: var(--space-4); }
+.w-full { width: 100%; }
+.placeholder-\[var\(--color-text-muted\)\]::placeholder { color: var(--color-text-muted); }
+.focus\:ring-2:focus { box-shadow: 0 0 0 2px var(--color-primary); }
+.focus\:ring-\[var\(--color-primary\)\]:focus { box-shadow: 0 0 0 2px var(--color-primary); }
+.focus\:border-transparent:focus { border-color: transparent; }
+
+/* Typography scale */
+.text-\[var\(--font-size-3xl\)\] { font-size: var(--font-size-3xl); }
+.text-\[var\(--font-size-2xl\)\] { font-size: var(--font-size-2xl); }
+.font-\[var\(--font-weight-bold\)\] { font-weight: var(--font-weight-bold); }
+.font-\[var\(--font-weight-normal\)\] { font-weight: var(--font-weight-normal); }
+.leading-\[var\(--line-height-tight\)\] { line-height: var(--line-height-tight); }
+.leading-\[var\(--line-height-normal\)\] { line-height: var(--line-height-normal); }
