@@ -8,12 +8,6 @@ A template repository for a React + Vite playground app. Use this to spin up a n
 
 1. Click **Use this template** on the repository page on GitHub.
 2. Create a new repository from the template.
-3. Clone your new repo:
-
-   ```bash
-   git clone https://github.com/YOUR_USERNAME/YOUR_NEW_REPO.git
-   cd YOUR_NEW_REPO
-   ```
 
 ## Install dependencies
 
